@@ -1,17 +1,21 @@
 package properties
 
-import "sync"
+import (
+	"sync"
+)
 
 var opt Properties
 var once sync.Once
 
 type Properties struct {
+	Name           string
 	propertiesList []string
 }
 
-func NewProperties() Properties {
+func NewProperties(name string) Properties {
 	once.Do(func() {
 		opt = Properties{
+			Name:           name,
 			propertiesList: []string{"open", "edit", "close"},
 		}
 	})

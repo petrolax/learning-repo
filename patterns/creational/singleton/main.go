@@ -13,14 +13,16 @@ type Document struct {
 
 func newDocument(name string, properts properties.Properties) Document {
 	return Document{
-		name: name,
-		properts, properts,
+		name:     name,
+		properts: properts,
 	}
 }
 
 func main() {
-	txtFile := newDocument("file.txt", properties.NewProperties())
-	xmlFile := newDocument("file.xml", properties.NewProperties())
+	txtFile := newDocument("file.xml", properties.NewProperties("properties-txt"))
+	xmlFile := newDocument("file.txt", properties.NewProperties("properties-xml"))
 
-	fmt.Println(txtFile.properts == xmlFile.properts)
+	fmt.Println(txtFile.properts.Name)
+	fmt.Println(xmlFile.properts.Name)
+	fmt.Println(txtFile.properts.Name == xmlFile.properts.Name) // true, because properties is singleton
 }
